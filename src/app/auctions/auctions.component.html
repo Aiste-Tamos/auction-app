@@ -1,0 +1,12 @@
+<h2>Create an auction: </h2>
+<app-form (addEvent)='add(name, description)'></app-form>
+    
+
+<ul class="auctions">
+    <li *ngFor="let auction of auctions">
+        <span>{{auction.name}}</span>
+        <br>
+        <span>{{auction.description}}</span>
+        <button class="delete" title="delete auction" (click)="delete(auction)">Remove this auction</button>
+    </li>
+</ul>
