@@ -70,14 +70,19 @@ input:invalid {
   }
   
   .add-button {
+   cursor: pointer;
    padding: .5rem 1.5rem;
    font-size: 1rem;
    margin-bottom: 2rem;
   }
   
-  .add-button:hover {
+  .add-button:hover:enabled {
     color: white;
     background-color: #42545C;
+  }
+
+  .add-button:disabled {
+    cursor: not-allowed;
   }
   
   button.delete {

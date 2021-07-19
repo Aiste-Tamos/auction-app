@@ -13,7 +13,7 @@ import { AuctionService } from "../auction.service";
 export class AuctionsComponent {
     auctions: any[] = [];
     
-   checkoutForm = this.formBuilder.group({
+   createAuctionForm = this.formBuilder.group({
      name: '',
      description: ''
   });
@@ -33,12 +33,9 @@ export class AuctionsComponent {
         if (!name || !description) { return; }
         this.auctionService.addAuction({ name, description } as Auction)
         .subscribe(auction => {
-            this.auctions.push(auction);
-            console.log(this.auctions);
-        });
-        
-        console.warn('Auction is created', this.checkoutForm.value);
-    }
+        this.auctions.push(auction);
+      });
+  }
 
     delete(auction: Auction): void {
         this.auctions = this.auctions.filter((auction: Auction[]) => auction !== auction);

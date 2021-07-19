@@ -1,26 +1,26 @@
 <h2>Create an auction: </h2>
-<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit('name', 'description')">
+<form [formGroup]="createAuctionForm" (ngSubmit)="onSubmit(name.value, description.value)">
     <div>
         <label for="name">
           Auction Name
         </label>
-        <input id="name" type="text" formControlName="name" minlength="4" required>
+        <input id="name" type="text" formControlName="name" minlength="4" required #name>
       </div>
       <div>
         <label for="description">
           Description
         </label>
-        <input id="description" type="text" formControlName="description" minlength="4" required>
+        <input id="description" type="text" formControlName="description" minlength="4" required #description>
       </div>
-    <button class="button" type="submit">Add Auction</button>
+    <button class="add-button" type="submit" [disabled]="!createAuctionForm.valid">Add Auction</button>
   
   </form>
     
 <ul class="auctions">
     <li *ngFor="let auction of auctions">
-        <span>{{auction.name}}</span>
+        <span>{{ auction.name }}</span>
         <br>
-        <span>{{auction.description}}</span>
+        <span>{{ auction.description }}</span>
         <button class="delete" title="delete auction" (click)="delete(auction)">Remove this auction</button>
     </li>
 </ul>
