@@ -1,7 +1,21 @@
 <h2>Create an auction: </h2>
-<app-form (addEvent)='add(name, description)'></app-form>
+<form [formGroup]="checkoutForm" (ngSubmit)="onSubmit('name', 'description')">
+    <div>
+        <label for="name">
+          Auction Name
+        </label>
+        <input id="name" type="text" formControlName="name" minlength="4" required>
+      </div>
+      <div>
+        <label for="description">
+          Description
+        </label>
+        <input id="description" type="text" formControlName="description" minlength="4" required>
+      </div>
+    <button class="button" type="submit">Add Auction</button>
+  
+  </form>
     
-
 <ul class="auctions">
     <li *ngFor="let auction of auctions">
         <span>{{auction.name}}</span>

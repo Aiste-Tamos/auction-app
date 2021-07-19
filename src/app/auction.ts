@@ -1,6 +1,8 @@
-export interface Auction {
-    id: number;
-    name: string;
-    description: string;
+export class Auction {
+  constructor(
+    public id: number,
+    public name: string,
+    public description: string,
+  ) {  }
   }
   

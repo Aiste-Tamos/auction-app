@@ -10,13 +10,11 @@ import { AppComponent } from './app.component';
 import { AuctionsComponent } from './auctions/auctions.component';
 
 import { UsersComponent } from './users/users.component';
-import { FormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuctionsComponent,
-    FormComponent,
     UsersComponent
   ],
   imports: [

@@ -1,4 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
+import { FormBuilder } from '@angular/forms';
+
 import { Auction } from '../auction';
 import { AuctionService } from "../auction.service";
 
@@ -8,22 +10,24 @@ import { AuctionService } from "../auction.service";
     styleUrls: ['./auctions.component.scss']
 })
 
-export class AuctionsComponent implements OnInit {
-    auction: Auction[] = [];
-    auctions: Auction[] = [];
-
-    constructor(private auctionService: AuctionService) {}
+export class AuctionsComponent {
+    auctions: any[] = [];
     
-    ngOnInit() {
-        this.getAuctions();
-    }
+   checkoutForm = this.formBuilder.group({
+     name: '',
+     description: ''
+  });
+
+    constructor(private auctionService: AuctionService,
+                private formBuilder: FormBuilder
+                ) {}
 
     getAuctions(): void {
         this.auctionService.getAuctions()
         .subscribe(auctions => this.auctions = auctions);
     }
 
-    add(name: string, description: string): void {
+    onSubmit(name: string, description: string): void {
         name = name.trim();
         description = description.trim();
         if (!name || !description) { return; }
@@ -32,10 +36,12 @@ export class AuctionsComponent implements OnInit {
             this.auctions.push(auction);
             console.log(this.auctions);
         });
+        
+        console.warn('Auction is created', this.checkoutForm.value);
     }
 
     delete(auction: Auction): void {
-        this.auctions = this.auctions.filter(a => a !== auction);
+        this.auctions = this.auctions.filter((auction: Auction[]) => auction !== auction);
         this.auctionService.deleteAuction(auction.id)
         .subscribe();
     }
