@@ -21,6 +21,8 @@
         <span>{{ auction.name }}</span>
         <br>
         <span>{{ auction.description }}</span>
+        <button class="start-button" (click)="startCountdown(60)">Start</button>
+        <!-- <div *ngIf="counter"> {{ counter }}</div> -->
         <button class="delete" title="delete auction" (click)="delete(auction)">Remove this auction</button>
     </li>
 </ul>

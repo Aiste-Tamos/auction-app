@@ -43,4 +43,16 @@ export class AuctionsComponent {
         this.auctionService.deleteAuction(auction.id)
         .subscribe();
     }
+
+    startCountdown(seconds: number) {
+        let counter = seconds;
+          
+        const interval = setInterval(() => {
+          counter--;
+            
+          if (counter < 0 ) {
+            clearInterval(interval);
+          }
+        }, 1000);
+      }
 }
