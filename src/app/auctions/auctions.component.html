@@ -1,5 +1,5 @@
 <h2>Create an auction: </h2>
-<form [formGroup]="createAuctionForm" (ngSubmit)="onSubmit(name.value, description.value)">
+<form [formGroup]="createAuctionForm" (ngSubmit)="onSubmit(name.value, description.value); name.value=''; description.value=''">
     <div>
         <label for="name">
           Auction Name

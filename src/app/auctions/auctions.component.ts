@@ -13,10 +13,10 @@ import { AuctionService } from "../auction.service";
 export class AuctionsComponent {
     auctions: any[] = [];
     
-   createAuctionForm = this.formBuilder.group({
-     name: '',
-     description: ''
-  });
+    createAuctionForm = this.formBuilder.group({
+      name: '',
+      description: ''
+    });
 
     constructor(private auctionService: AuctionService,
                 private formBuilder: FormBuilder
@@ -34,11 +34,12 @@ export class AuctionsComponent {
         this.auctionService.addAuction({ name, description } as Auction)
         .subscribe(auction => {
         this.auctions.push(auction);
+        console.log(auction);
       });
   }
 
     delete(auction: Auction): void {
-        this.auctions = this.auctions.filter((auction: Auction[]) => auction !== auction);
+        this.auctions = this.auctions.filter(a => a! == a);
         this.auctionService.deleteAuction(auction.id)
         .subscribe();
     }
